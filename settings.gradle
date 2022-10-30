@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "Valorant Companion"
 include ':app'
 include ':feature-agent'
+include ':core:core-api'
