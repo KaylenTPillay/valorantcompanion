@@ -7,6 +7,4 @@ interface ViewModelAgentList {
 
     val uiState: StateFlow<UIStateAgentList>
 
-    fun onInit()
-
 }

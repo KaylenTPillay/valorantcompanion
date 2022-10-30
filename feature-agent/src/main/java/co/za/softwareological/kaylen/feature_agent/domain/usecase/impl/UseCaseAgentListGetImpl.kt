@@ -18,9 +18,13 @@ internal class UseCaseAgentListGetImpl(
     override suspend fun execute(
         request: EntityRequestAgentList
     ): EntityResult<EntityResponseAgentList> {
-        return withContext(Dispatchers.IO) {
-            val result = repository.getAgentList(request.toDTORequestAgentList())
-            result.toEntityResult { response -> response.toEntityResponseAgentList() }
+        return try {
+            withContext(Dispatchers.IO) {
+                val result = repository.getAgentList(request.toDTORequestAgentList())
+                result.toEntityResult { response -> response.toEntityResponseAgentList() }
+            }
+        } catch (e: Exception) {
+            EntityResult.Failure(exception = e)
         }
     }
 

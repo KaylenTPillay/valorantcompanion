@@ -6,6 +6,8 @@ import co.za.softwareological.kaylen.feature_agent.domain.model.response.EntityR
 
 internal interface UseCaseAgentListGet {
 
-    suspend fun execute(request: EntityRequestAgentList): EntityResult<EntityResponseAgentList>
+    suspend fun execute(
+        request: EntityRequestAgentList = EntityRequestAgentList()
+    ): EntityResult<EntityResponseAgentList>
 
 }
