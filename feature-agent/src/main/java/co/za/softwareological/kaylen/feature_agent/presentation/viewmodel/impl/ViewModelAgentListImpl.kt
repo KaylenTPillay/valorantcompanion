@@ -3,6 +3,7 @@ package co.za.softwareological.kaylen.feature_agent.presentation.viewmodel.impl
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import co.za.softwareological.kaylen.core_domain.model.EntityResult
+import co.za.softwareological.kaylen.feature_agent.domain.model.response.EntityResponseAgentList
 import co.za.softwareological.kaylen.feature_agent.domain.usecase.UseCaseAgentListGet
 import co.za.softwareological.kaylen.feature_agent.presentation.model.UIStateAgentList
 import co.za.softwareological.kaylen.feature_agent.presentation.viewmodel.ViewModelAgentList
@@ -27,9 +28,7 @@ internal class ViewModelAgentListImpl(
         viewModelScope.launch {
             when (val result = useCaseAgentListGet.execute()) {
                 is EntityResult.Success -> {
-                    _uiStateFlow.update { currentState ->
-                        currentState.copy(testData = result.data.status.toString())
-                    }
+                    handleOnAgentListSuccess(result.data)
                 }
                 is EntityResult.Failure -> {
                     _uiStateFlow.update { currentState ->
@@ -37,6 +36,14 @@ internal class ViewModelAgentListImpl(
                     }
                 }
             }
+        }
+    }
+
+    private fun handleOnAgentListSuccess(data: EntityResponseAgentList) {
+        val displayData = data.agents.joinToString(separator = "\n") { it.name }
+
+        _uiStateFlow.update { currentState ->
+            currentState.copy(testData = displayData)
         }
     }
 
