@@ -1,8 +1,8 @@
 package co.za.softwareological.kaylen.feature_agent.api.model.request
 
 internal data class DTORequestAgentList(
-    val language: String = DEFAULT_LANGUAGE,
-    val isPlayableCharacter: Boolean = DEFAULT_IS_PLAYABLE_CHARACTER
+    val language: String,
+    val isPlayableCharacter: Boolean
 ) {
 
     fun getParamMap(): Map<String, String> {
@@ -12,8 +12,4 @@ internal data class DTORequestAgentList(
         }
     }
 
-    companion object {
-        const val DEFAULT_LANGUAGE: String = "en-US"
-        const val DEFAULT_IS_PLAYABLE_CHARACTER: Boolean = true
-    }
 }

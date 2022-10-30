@@ -1,6 +1,7 @@
 package co.za.softwareological.kaylen.feature_agent.api.repository.impl
 
 import co.za.softwareological.kaylen.core_api.model.DTOResult
+import co.za.softwareological.kaylen.core_api.model.transformer.TransformerDTOResult.toDTOResult
 import co.za.softwareological.kaylen.feature_agent.api.model.request.DTORequestAgentList
 import co.za.softwareological.kaylen.feature_agent.api.model.response.DTOResponseAgentList
 import co.za.softwareological.kaylen.feature_agent.api.repository.RepositoryAgent
@@ -12,7 +13,7 @@ internal class RepositoryAgentImpl(
 
     override suspend fun getAgentList(request: DTORequestAgentList): DTOResult<DTOResponseAgentList> {
         val response = sourceNetworkAgent?.getAgentList(request.getParamMap())
-        return DTOResult.Failure()
+        return response.toDTOResult()
     }
 
 }
