@@ -1,13 +1,8 @@
 package co.za.softwareological.kaylen.feature_agent.domain.model
 
-data class EntityAgent(
-    val name: String = DEFAULT_NAME,
-    val description: String = DEFAULT_DESCRIPTION
-) {
+import co.za.softwareological.kaylen.core_util.defaults.UtilDefaults
 
-    companion object {
-        const val DEFAULT_NAME: String = ""
-        const val DEFAULT_DESCRIPTION: String = ""
-    }
-
-}
+internal data class EntityAgent(
+    val name: String = UtilDefaults.DEFAULT_STRING,
+    val description: String = UtilDefaults.DEFAULT_STRING
+)

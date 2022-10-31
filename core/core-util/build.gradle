@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'co.za.softwareological.kaylen.feature_agent'
+    namespace 'co.za.softwareological.kaylen.core_util'
     compileSdk 33
 
     defaultConfig {
@@ -31,17 +31,10 @@ android {
 }
 
 dependencies {
-    implementation project(":core:core-api")
-    implementation project(":core:core-domain")
-    implementation project(":core:core-util")
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
-    implementation 'com.google.code.gson:gson:2.10'
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
 
     testImplementation 'junit:junit:4.13.2'
 

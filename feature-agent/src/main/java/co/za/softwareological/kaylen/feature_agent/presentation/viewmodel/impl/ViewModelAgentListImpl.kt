@@ -2,7 +2,8 @@ package co.za.softwareological.kaylen.feature_agent.presentation.viewmodel.impl
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import co.za.softwareological.kaylen.core_domain.model.EntityResult
+import co.za.softwareological.kaylen.core_domain.model.result.EntityResult
+import co.za.softwareological.kaylen.feature_agent.domain.model.request.EntityRequestAgentList
 import co.za.softwareological.kaylen.feature_agent.domain.model.response.EntityResponseAgentList
 import co.za.softwareological.kaylen.feature_agent.domain.usecase.UseCaseAgentListGet
 import co.za.softwareological.kaylen.feature_agent.presentation.model.UIStateAgentList
@@ -26,7 +27,9 @@ internal class ViewModelAgentListImpl(
 
     private fun fetchAgentList() {
         viewModelScope.launch {
-            when (val result = useCaseAgentListGet.execute()) {
+            when (
+                val result = useCaseAgentListGet.execute(request = EntityRequestAgentList())
+            ) {
                 is EntityResult.Success -> {
                     handleOnAgentListSuccess(result.data)
                 }

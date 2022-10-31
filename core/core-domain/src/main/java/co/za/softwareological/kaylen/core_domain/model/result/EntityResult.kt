@@ -1,4 +1,4 @@
-package co.za.softwareological.kaylen.core_domain.model
+package co.za.softwareological.kaylen.core_domain.model.result
 
 sealed class EntityResult<E> {
 

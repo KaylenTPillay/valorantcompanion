@@ -1,7 +1,7 @@
 package co.za.softwareological.kaylen.core_domain.model.transformer
 
 import co.za.softwareological.kaylen.core_api.model.DTOResult
-import co.za.softwareological.kaylen.core_domain.model.EntityResult
+import co.za.softwareological.kaylen.core_domain.model.result.EntityResult
 
 object TransformerEntityResult {
 
