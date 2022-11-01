@@ -6,7 +6,7 @@ import co.za.softwareological.kaylen.feature_agent.domain.usecase.factory.UseCas
 import co.za.softwareological.kaylen.feature_agent.presentation.viewmodel.impl.ViewModelAgentListImpl
 
 @Suppress("UNCHECKED_CAST")
-class ViewModelFactoryAgentList : ViewModelProvider.Factory {
+internal class ViewModelFactoryAgentList : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ViewModelAgentListImpl::class.java)) {
