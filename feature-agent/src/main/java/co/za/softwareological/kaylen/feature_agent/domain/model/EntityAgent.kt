@@ -4,5 +4,7 @@ import co.za.softwareological.kaylen.core_util.defaults.UtilDefaults
 
 internal data class EntityAgent(
     val name: String = UtilDefaults.DEFAULT_STRING,
-    val description: String = UtilDefaults.DEFAULT_STRING
+    val description: String = UtilDefaults.DEFAULT_STRING,
+    val avatarUrl: String = UtilDefaults.DEFAULT_STRING,
+    val roleUrl: String = UtilDefaults.DEFAULT_STRING
 )

@@ -22,7 +22,9 @@ internal object TransformerEntityResponseEntityAgentList {
     private fun DTOAgentData.toEntityAgent(): EntityAgent {
         return EntityAgent(
             name = displayName ?: UtilDefaults.DEFAULT_STRING,
-            description = description ?: UtilDefaults.DEFAULT_STRING
+            description = description ?: UtilDefaults.DEFAULT_STRING,
+            avatarUrl = displayIconSmall ?: UtilDefaults.DEFAULT_STRING,
+            roleUrl = role?.displayIcon ?: UtilDefaults.DEFAULT_STRING
         )
     }
 

@@ -7,6 +7,7 @@ import co.za.softwareological.kaylen.feature_agent.domain.model.request.EntityRe
 import co.za.softwareological.kaylen.feature_agent.domain.model.response.EntityResponseAgentList
 import co.za.softwareological.kaylen.feature_agent.domain.usecase.UseCaseAgentListGet
 import co.za.softwareological.kaylen.feature_agent.presentation.model.UIStateAgentList
+import co.za.softwareological.kaylen.feature_agent.presentation.model.transformer.TransformerUIStateAgent.toUIStateAgents
 import co.za.softwareological.kaylen.feature_agent.presentation.viewmodel.ViewModelAgentList
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -27,27 +28,29 @@ internal class ViewModelAgentListImpl(
 
     private fun fetchAgentList() {
         viewModelScope.launch {
-            when (
-                val result = useCaseAgentListGet.execute(request = EntityRequestAgentList())
-            ) {
+            when (val result = useCaseAgentListGet.execute(request = EntityRequestAgentList())) {
                 is EntityResult.Success -> {
-                    handleOnAgentListSuccess(result.data)
+                    handleOnAgentListSuccess(result)
                 }
                 is EntityResult.Failure -> {
-                    _uiStateFlow.update { currentState ->
-                        currentState.copy(testData = result.statusCode.toString())
-                    }
+                    handleOnAgentListFailed()
                 }
             }
         }
     }
 
-    private fun handleOnAgentListSuccess(data: EntityResponseAgentList) {
-        val displayData = data.agents.joinToString(separator = "\n") { it.name }
-
-        _uiStateFlow.update { currentState ->
-            currentState.copy(testData = displayData)
+    private fun handleOnAgentListSuccess(result: EntityResult.Success<EntityResponseAgentList>) {
+        updateState { state ->
+            state.copy(agents = result.data.agents.toUIStateAgents())
         }
+    }
+
+    private fun handleOnAgentListFailed() {
+        updateState { state -> state.copy(isInErrorState = true) }
+    }
+
+    private fun updateState(block: (currentState: UIStateAgentList) -> UIStateAgentList) {
+        _uiStateFlow.update(block)
     }
 
 }
