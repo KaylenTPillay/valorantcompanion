@@ -11,13 +11,20 @@ import co.za.softwareological.kaylen.feature_agent.presentation.viewmodel.impl.V
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-object DIFeatureAgent {
-    val modules = module {
-        factory { SourceNetworkFactory.generateConnector(SourceNetworkAgent::class.java) }
-        factory<RepositoryAgent> { RepositoryAgentImpl(get()) }
-        factory { UseCaseAgentListGet(get()) }
+private val apiDIModule = module {
+    factory { SourceNetworkFactory.generateConnector(SourceNetworkAgent::class.java) }
+    factory<RepositoryAgent> { RepositoryAgentImpl(get()) }
+}
 
-        factory<ViewAgentList> { ViewAgentListImpl() }
-        viewModel { ViewModelAgentListImpl(get()) }
-    }
+private val domainDIModule = module {
+    factory { UseCaseAgentListGet(get()) }
+}
+
+private val presentationDIModule = module {
+    factory<ViewAgentList> { ViewAgentListImpl() }
+    viewModel { ViewModelAgentListImpl(get()) }
+}
+
+val featureAgentDIModule = module {
+    includes(apiDIModule, domainDIModule, presentationDIModule)
 }

@@ -1,7 +1,7 @@
 package co.za.softwareological.kaylen.valorantcompanion
 
 import android.app.Application
-import co.za.softwareological.kaylen.feature_agent.di.DIFeatureAgent
+import co.za.softwareological.kaylen.feature_agent.di.featureAgentDIModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -10,7 +10,7 @@ import org.koin.dsl.module
 class ValorantCompanionApplication : Application() {
 
     private val appModule = module {
-        includes(DIFeatureAgent.modules)
+        includes(featureAgentDIModule)
     }
 
     override fun onCreate() {
