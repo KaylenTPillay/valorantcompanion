@@ -5,6 +5,8 @@ import co.za.softwareological.kaylen.feature_agent.api.repository.RepositoryAgen
 import co.za.softwareological.kaylen.feature_agent.api.repository.impl.RepositoryAgentImpl
 import co.za.softwareological.kaylen.feature_agent.api.source.network.SourceNetworkAgent
 import co.za.softwareological.kaylen.feature_agent.domain.usecase.UseCaseAgentListGet
+import co.za.softwareological.kaylen.feature_agent.presentation.view.ViewAgentList
+import co.za.softwareological.kaylen.feature_agent.presentation.view.impl.ViewAgentListImpl
 import co.za.softwareological.kaylen.feature_agent.presentation.viewmodel.impl.ViewModelAgentListImpl
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -14,6 +16,8 @@ object DIFeatureAgent {
         factory { SourceNetworkFactory.generateConnector(SourceNetworkAgent::class.java) }
         factory<RepositoryAgent> { RepositoryAgentImpl(get()) }
         factory { UseCaseAgentListGet(get()) }
+
+        factory<ViewAgentList> { ViewAgentListImpl() }
         viewModel { ViewModelAgentListImpl(get()) }
     }
 }
