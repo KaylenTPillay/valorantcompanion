@@ -19,18 +19,17 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.FilterQuality
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import co.za.softwareological.kaylen.feature_agent.presentation.model.UIStateAgent
 import co.za.softwareological.kaylen.feature_agent.presentation.view.ViewAgentList
-import co.za.softwareological.kaylen.feature_agent.presentation.viewmodel.ViewModelAgentList
-import co.za.softwareological.kaylen.feature_agent.presentation.viewmodel.factory.ViewModelFactoryAgentList
+import co.za.softwareological.kaylen.feature_agent.presentation.viewmodel.impl.ViewModelAgentListImpl
 import coil.compose.AsyncImage
+import org.koin.androidx.compose.koinViewModel
 
 internal class ViewAgentListImpl : ViewAgentList {
 
     @Composable
     override fun RenderScreen() {
-        val viewModel: ViewModelAgentList = viewModel(factory = ViewModelFactoryAgentList())
+        val viewModel = koinViewModel<ViewModelAgentListImpl>()
         val uiState by viewModel.uiState.collectAsState()
 
         when {
