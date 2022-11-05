@@ -42,33 +42,32 @@ dependencies {
     implementation project(":core:core-domain")
     implementation project(":core:core-util")
 
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
-    implementation 'com.google.code.gson:gson:2.10'
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"
-    implementation "io.coil-kt:coil-compose:2.2.2"
-    implementation "io.insert-koin:koin-android:3.3.0"
-    implementation "io.insert-koin:koin-androidx-compose:3.3.0"
+    def composeBom = platform(libs.androidx.compose.bom)
 
-    def composeBom = platform('androidx.compose:compose-bom:2022.10.00')
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.viewmodel.ktx
+    implementation libs.androidx.viewmodel.compose
+
+    implementation libs.material
+    implementation libs.retrofit
+    implementation libs.gson
+    implementation libs.kotlin.coroutines.android
+    implementation libs.coil.compose
+    implementation libs.koin.android
+    implementation libs.koin.android.compose
+
     implementation composeBom
+    implementation libs.androidx.compose.material3
+    implementation libs.androidx.compose.ui.tooling.preview
+
+    debugImplementation libs.androidx.compose.ui.tooling
+    debugImplementation libs.androidx.compose.ui.test
+
+    testImplementation libs.junit
+
     androidTestImplementation composeBom
-    implementation 'androidx.compose.material3:material3'
-
-    // Android Studio Preview support
-    implementation 'androidx.compose.ui:ui-tooling-preview'
-    debugImplementation 'androidx.compose.ui:ui-tooling'
-
-    // UI Tests
-    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
-    debugImplementation 'androidx.compose.ui:ui-test-manifest'
-
-    testImplementation 'junit:junit:4.13.2'
-
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation libs.androidx.test.junit
+    androidTestImplementation libs.androidx.test.espresso
+    androidTestImplementation libs.androidx.compose.ui.test.junit
 }
