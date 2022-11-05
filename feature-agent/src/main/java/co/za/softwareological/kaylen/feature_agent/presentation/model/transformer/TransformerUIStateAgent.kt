@@ -6,15 +6,18 @@ import co.za.softwareological.kaylen.feature_agent.presentation.model.UIStateAge
 internal object TransformerUIStateAgent {
 
     fun List<EntityAgent>.toUIStateAgents(): List<UIStateAgent> {
-        return map { it.toUIStateAgent() }
+        return mapIndexed { index, entityAgent ->
+            entityAgent.toUIStateAgent(isSelected = index == 0)
+        }
     }
 
-    private fun EntityAgent.toUIStateAgent(): UIStateAgent {
+    private fun EntityAgent.toUIStateAgent(isSelected: Boolean): UIStateAgent {
         return UIStateAgent(
             name = name,
             description = description,
             avatarUrl = avatarUrl,
-            roleUrl = roleUrl
+            roleUrl = roleUrl,
+            isSelected = isSelected
         )
     }
 

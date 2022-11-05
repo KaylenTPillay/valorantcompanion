@@ -54,6 +54,7 @@ dependencies {
     implementation libs.androidx.startup
     implementation libs.material
     implementation libs.koin.android
+    implementation libs.androidx.compose.material3.window
 
     testImplementation libs.junit
 

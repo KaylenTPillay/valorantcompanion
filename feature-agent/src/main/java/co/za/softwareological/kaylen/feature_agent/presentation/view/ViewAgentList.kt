@@ -5,6 +5,6 @@ import androidx.compose.runtime.Composable
 interface ViewAgentList {
 
     @Composable
-    fun RenderScreen()
+    fun RenderScreen(shouldShowDuelPane: Boolean)
 
 }
