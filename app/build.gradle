@@ -53,7 +53,7 @@ dependencies {
     implementation libs.androidx.activity.compose
     implementation libs.androidx.startup
     implementation libs.material
-    implementation libs.koinAndroid
+    implementation libs.koin.android
 
     testImplementation libs.junit
 

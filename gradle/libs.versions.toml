@@ -5,8 +5,15 @@ androidXActivityKtx = "1.6.1"
 androidXViewModelKtx = "2.5.1"
 androidXActivityCompose = "1.6.1"
 androidXStartup = "1.1.1"
+androidXComposeBom = "2022.10.00"
+
+kotlinCoroutinesAndroid = "1.6.4"
+
 material = "1.7.0"
+retrofit2 = "2.9.0"
 koinAndroid = "3.3.0"
+coilCompose = "2.2.2"
+gson = "2.10"
 
 # Test Libraries
 junit = "4.13.2"
@@ -18,15 +25,32 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidXAppCompat" }
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "androidXActivityKtx" }
 androidx-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidXViewModelKtx" }
+androidx-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidXViewModelKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidXActivityCompose" }
-androidx-startup = { group = "androidx.activity", name = "activity-compose", version.ref = "androidXActivityCompose" }
+androidx-startup = { group = "androidx.startup", name = "startup-runtime", version.ref = "androidXStartup" }
+
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidXComposeBom" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
-koinAndroid = { group = "io.insert-koin", name = "koin-android", version.ref = "koinAndroid" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit2" }
+retrofit-gson-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit2" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+
+koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koinAndroid" }
+koin-android-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koinAndroid" }
+
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coilCompose" }
+
+kotlin-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinCoroutinesAndroid" }
 
 # Test Libraries
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 
 androidx-test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxTestJUnit" }
 androidx-test-espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspressoCore" }
+androidx-compose-ui-test-junit = { group = "androidx.compose.ui", name = "ui-test-junit4" }
